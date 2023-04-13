@@ -52,13 +52,12 @@ class Invoice
      * Find service the invoice belongs to
      * @return string
      */
-    static public function getServiceByShortName($serviceShortName): string
+    static public function getServiceLongName($serviceShortName): string
     {
         $services = [
-            'OVH' => 'ovh',
-            'SYS' => 'soyoustart',
-            'KIM' => 'kimsufi',
-            'L4U' => 'ovh',
+            'OVH' => 'OVH',
+            'SYS' => 'SoYouStart',
+            'KIM' => 'Kimsufi'
         ];
 
         return $services[$serviceShortName];

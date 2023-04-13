@@ -1,5 +1,6 @@
 {
     "require": {
-        "ovh/ovh": "^3.2"
+        "ovh/ovh": "^3.2",
+        "phpmailer/phpmailer": "^6.8"
     }
 }

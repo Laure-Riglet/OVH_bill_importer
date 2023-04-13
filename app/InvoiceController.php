@@ -51,4 +51,23 @@ class InvoiceController
 
         return $priceInt . 'EUR' . $priceDec;
     }
+
+    /**
+     * Get emails of invoice recipients
+     * @return array    An array of emails
+     */
+    static function getEmailData()
+    {
+        $configData = parse_ini_file(__DIR__ . '/../config.ini');
+        return [
+            'host' => $configData['EMAIL_HOST'],
+            'port' => $configData['EMAIL_PORT'],
+            'username' => $configData['EMAIL_USERNAME'],
+            'password' => $configData['EMAIL_PASSWORD'],
+            'sender' => $configData['EMAIL_FROM'],
+            'to' => explode(',', $configData['EMAIL_TO']),
+            'cc' => isset($configData['EMAIL_CC']) ? explode(',', $configData['EMAIL_CC']) : [],
+            'bcc' => isset($configData['EMAIL_BCC']) ? explode(',', $configData['EMAIL_BCC']) : []
+        ];
+    }
 }
