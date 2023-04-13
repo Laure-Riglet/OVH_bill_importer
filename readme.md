@@ -12,7 +12,7 @@ This is a simple PHP script that:
 -   Composer
 -   MySQL database
 -   SMTP credentials (host, port, username, password)
--   OVH API credentials (application key, application secret, consumer key) and endpoint
+-   [OVH API credentials (login to get them set)](https://api.ovh.com/console/#/me) (endpoint, application key, application secret, consumer key) for `/me/bill` and `/me/bill/*` GET requests
 
 ## Installation
 
