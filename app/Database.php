@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Utils;
-
-use PDO;
-
 // Database::getPDO()
 class Database
 {
