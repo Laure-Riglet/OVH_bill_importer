@@ -11,12 +11,11 @@ This is a simple PHP script that:
 -   PHP 7.4
 -   Composer
 -   MySQL database
--   SMTP credentials (host, port, username, password)
 -   [OVH API credentials (login to get them set)](https://api.ovh.com/console/#/me) (endpoint, application key, application secret, consumer key) for `/me/bill` and `/me/bill/*` GET requests
 
 ## Installation
 
-Install **OVH SDK for PHP** & **PHPMailer** with Composer in the terminal:
+Install **OVH SDK for PHP** with Composer in the terminal:
 
 ```bash
 composer install
@@ -41,4 +40,4 @@ $requestedServices = ['OVH'];
 
 ## Usage
 
-In the terminal, in the folder where the script is located, run `php ovh_bill_importer.php`.
+In the terminal, in the folder where the script is located, run `php ovh_bill_importer.php`. You can also set a cron task.

@@ -1,18 +1,18 @@
 <?php
 
-require 'Database.php';
+require_once 'Database.php';
 
 class Invoice
 {
     private $id;
     private $service;
-    private $originalId;
-    private $fileName;
-    private $filePath;
+    private $original_id;
+    private $filename;
+    private $filepath;
     private $issued_at;
-    private $priceWithoutTax;
-    private $priceWithTax;
-    private $pdfUrl;
+    private $price_without_tax;
+    private $price_with_tax;
+    private $pdf_url;
 
     /**
      * Find all invoices
@@ -29,13 +29,13 @@ class Invoice
     /**
      * Find an invoice by its original ID
      *
-     * @param string $originalId
+     * @param string $original_id
      * @return Invoice|bool
      */
-    static public function findByOriginalId($originalId)
+    static public function findByOriginalId($original_id)
     {
         return Database::getPDO()
-            ->query('SELECT * FROM invoices WHERE `original_id` = "' . $originalId . '"')
+            ->query('SELECT * FROM invoices WHERE `original_id` = "' . $original_id . '";')
             ->fetchObject(self::class);
     }
 
@@ -43,9 +43,9 @@ class Invoice
      * Check if an invoice already exists in the database
      * @return bool
      */
-    static public function exists(string $originalId): bool
+    static public function exists(string $original_id): bool
     {
-        return !empty(self::findByOriginalId($originalId));
+        return !empty(self::findByOriginalId($original_id));
     }
 
     /**
@@ -79,12 +79,12 @@ class Invoice
         $statement->execute([
             'service' => $this->getService(),
             'original_id' => $this->getOriginalId(),
-            'filename' => $this->getFileName(),
-            'filepath' => $this->getFilePath(),
+            'filename' => $this->getFilename(),
+            'filepath' => $this->getFilepath(),
             'issued_at' => $this->getIssuedAt(),
             'price_without_tax' => $this->getPriceWithoutTax(),
             'price_with_tax' => $this->getPriceWithTax(),
-            'pdf_url' => $this->getpdfUrl()
+            'pdf_url' => $this->getPdfUrl()
         ]);
     }
 
@@ -123,53 +123,53 @@ class Invoice
     }
 
     /**
-     * Get the value of originalId
+     * Get the value of original_id
      */
     public function getOriginalId()
     {
-        return $this->originalId;
+        return $this->original_id;
     }
 
     /**
-     * Set the value of originalId
+     * Set the value of original_id
      */
-    public function setOriginalId(string $originalId): self
+    public function setOriginalId(string $original_id): self
     {
-        $this->originalId = $originalId;
+        $this->original_id = $original_id;
         return $this;
     }
 
     /**
-     * Get the value of fileName
+     * Get the value of filename
      */
-    public function getFileName()
+    public function getFilename()
     {
-        return $this->fileName;
+        return $this->filename;
     }
 
     /**
-     * Set the value of fileName
+     * Set the value of filename
      */
-    public function setFileName(string $fileName): self
+    public function setFilename(string $filename): self
     {
-        $this->fileName = $fileName;
+        $this->filename = $filename;
         return $this;
     }
 
     /**
-     * Get the value of filePath
+     * Get the value of filepath
      */
-    public function getFilePath()
+    public function getFilepath()
     {
-        return $this->filePath;
+        return $this->filepath;
     }
 
     /**
-     * Set the value of filePath
+     * Set the value of filepath
      */
-    public function setFilePath(string $filePath): self
+    public function setFilepath(string $filepath): self
     {
-        $this->filePath = $filePath;
+        $this->filepath = $filepath;
         return $this;
     }
 
@@ -191,53 +191,53 @@ class Invoice
     }
 
     /**
-     * Get the value of priceWithoutTax
+     * Get the value of price_without_tax
      */
     public function getPriceWithoutTax()
     {
-        return $this->priceWithoutTax;
+        return $this->price_without_tax;
     }
 
     /**
-     * Set the value of priceWithoutTax
+     * Set the value of price_without_tax
      */
-    public function setPriceWithoutTax(float $priceWithoutTax): self
+    public function setPriceWithoutTax(float $price_without_tax): self
     {
-        $this->priceWithoutTax = $priceWithoutTax;
+        $this->price_without_tax = $price_without_tax;
         return $this;
     }
 
     /**
-     * Get the value of priceWithTax
+     * Get the value of price_with_tax
      */
     public function getPriceWithTax()
     {
-        return $this->priceWithTax;
+        return $this->price_with_tax;
     }
 
     /**
-     * Set the value of priceWithTax
+     * Set the value of price_with_tax
      */
-    public function setPriceWithTax(float $priceWithTax): self
+    public function setPriceWithTax(float $price_with_tax): self
     {
-        $this->priceWithTax = $priceWithTax;
+        $this->price_with_tax = $price_with_tax;
         return $this;
     }
 
     /**
-     * Get the value of pdfUrl
+     * Get the value of pdf_url
      */
     public function getPdfUrl()
     {
-        return $this->pdfUrl;
+        return $this->pdf_url;
     }
 
     /**
-     * Set the value of pdfUrl
+     * Set the value of pdf_url
      */
-    public function setPdfUrl(string $pdfUrl): self
+    public function setPdfUrl(string $pdf_url): self
     {
-        $this->pdfUrl = $pdfUrl;
+        $this->pdf_url = $pdf_url;
         return $this;
     }
 }

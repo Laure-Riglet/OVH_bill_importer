@@ -1,6 +1,11 @@
 # Composer
-vendor
-composer.lock
+/vendor/
+/composer.lock
 
 # Fichier de config
-config.ini
+/config.ini
+
+# Invoices directories
+/invoices/OVH/
+/invoices/Kimsufi/
+/invoices/SoYouStart/

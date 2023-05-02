@@ -1,12 +1,8 @@
 ### Email configuration ###
-EMAIL_HOST=
-EMAIL_PORT=
-EMAIL_USERNAME=
-EMAIL_PASSWORD=
 EMAIL_FROM=
 EMAIL_TO=
-# EMAIL_CC= 
-# EMAIL_BCC= 
+EMAIL_CC= 
+EMAIL_BCC= 
 
 ### MySQL database configuration ###
 DB_HOST=

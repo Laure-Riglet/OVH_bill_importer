@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../app/Invoice.php';
+require_once __DIR__ . '/../app/Invoice.php';
 
 class InvoiceController
 {
@@ -23,13 +23,13 @@ class InvoiceController
 
     /**
      * Get a bill's data
-     * @param $originalId   string  The bill ID
+     * @param $original_id   string  The bill ID
      * @return array    An array of bill data
      */
-    static function getBill($client, $originalId)
+    static function getBill($client, $original_id)
     {
         try {
-            return $client->get('/me/bill/' . $originalId);
+            return $client->get('/me/bill/' . $original_id);
         } catch (GuzzleHttp\Exception\ClientException $e) {
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
@@ -60,14 +60,10 @@ class InvoiceController
     {
         $configData = parse_ini_file(__DIR__ . '/../config.ini');
         return [
-            'host' => $configData['EMAIL_HOST'],
-            'port' => $configData['EMAIL_PORT'],
-            'username' => $configData['EMAIL_USERNAME'],
-            'password' => $configData['EMAIL_PASSWORD'],
             'sender' => $configData['EMAIL_FROM'],
-            'to' => explode(',', $configData['EMAIL_TO']),
-            'cc' => isset($configData['EMAIL_CC']) ? explode(',', $configData['EMAIL_CC']) : [],
-            'bcc' => isset($configData['EMAIL_BCC']) ? explode(',', $configData['EMAIL_BCC']) : []
+            'to' => $configData['EMAIL_TO'],
+            'cc' => isset($configData['EMAIL_CC']) ? $configData['EMAIL_CC'] : "",
+            'bcc' => $configData['EMAIL_BCC'] ? $configData['EMAIL_BCC'] : ""
         ];
     }
 }
